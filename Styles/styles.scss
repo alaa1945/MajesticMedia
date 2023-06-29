@@ -8,7 +8,7 @@
 
 body {
   font-family: "Poppins", sans-serif;
-  a{
+  a {
     text-decoration: none;
   }
   nav {
@@ -35,11 +35,11 @@ body {
         &.col {
           color: #120f0f !important;
           &:hover {
-            color: #fc3792;
+            color: #fc3792!important;
           }
         }
         &:hover {
-          color: #fc3792;
+          color: #fc3792!important;
         }
       }
 
@@ -58,6 +58,9 @@ body {
         box-shadow: none;
         .navbar-toggler-icon {
           background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgb(255,255,255)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+        }
+        .nav-scroll {
+          background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgb(0,0,0)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E") !important;
         }
       }
       .collapse {
@@ -112,16 +115,13 @@ body {
         position: relative;
         left: 20%;
         top: 25px;
-        animation: rotation 1s infinite linear;
       }
       .icon2 {
-        animation: rotation 1s infinite linear;
         position: relative;
         right: -100%;
       }
       .icon3 {
         position: absolute;
-        animation: rotation 9s infinite linear;
         top: 26%;
         left: 8%;
       }
@@ -207,14 +207,16 @@ body {
           background-color: #191919;
           color: white;
           padding: 10px 20px;
-          margin-bottom: 25px;
+          margin-bottom: 25px !important;
+          width: 100%;
+          max-width: 400px;
+          margin: auto;
           .service-name {
             font-size: 17px;
             font-weight: 500;
             margin-top: 12px;
           }
           .service-paragraph {
-            //    display: flex;
             align-items: center;
             font-weight: 300;
             color: #ece7e7;
@@ -229,9 +231,21 @@ body {
             }
           }
           .service-description {
-            &.hide {
+            &.expanded-p {
               display: none;
+              margin-top: 10px;
             }
+            &.active {
+              .expanded-p {
+                display: block;
+                overflow: hidden;
+                transition: height 0.3s ease-out;
+                transition-delay: 0.2s;
+              }
+            }
+          }
+          .rotate {
+            transform: rotate(180deg);
           }
         }
       }
@@ -332,10 +346,13 @@ body {
             width: 100%;
             max-width: 39px;
           }
+          &:hover{
+            opacity: 0.7;
+          }
         }
       }
-      .cta-question{
-        color:white;
+      .cta-question {
+        color: white;
         font-size: 30px;
         font-weight: 500;
         margin-top: 0;
@@ -344,13 +361,14 @@ body {
         .footer-btn {
           background-color: transparent;
           border: 1px solid #fc3792;
-          padding:7px 14px;
-          width:100%;
+          padding: 7px 14px;
+          width: 100%;
           max-width: fit-content;
-          color:white;
+          color: white;
           font-size: 16px;
           font-weight: 300px;
-          &:hover{
+          &:hover {
+            color: #ece7e7!important;
             background-color: #fc3792;
             border-color: white;
             transition: all 200ms ease-in;
@@ -362,37 +380,29 @@ body {
     .level-2 {
       background-color: #161616;
       text-align: center;
-      padding:25px 0;
-      color:white;
-      .contact-info{
-      p{
-        font-weight: 300;
-        margin-bottom: 0;
+      padding: 25px 0;
+      color: white;
+      .contact-info {
+        p {
+          font-weight: 300;
+          margin-bottom: 0;
+        }
       }
-    }
     }
     .level-3 {
       background-color: #000000;
-      padding:13px 0;
-      .copyrights{
+      padding: 13px 0;
+      .copyrights {
         text-align: center;
         margin-bottom: 0;
         color: #7e7e7e;
-        span{
+        span {
           color: #fffafa;
           font-weight: 200;
           font-size: inherit;
         }
       }
     }
-  }
-}
-@keyframes rotation {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
   }
 }
 @media (min-width: 768px) and (max-width: 999px) {
@@ -450,6 +460,21 @@ body {
 }
 @media (max-width: 990px) {
   body {
+    nav {
+      &.fixed-top {
+        .navbar-nav {
+          background: #fff;
+          margin-top: 30px;
+          padding: 25px;
+        }
+        .nav-link{
+          color:#000000!important;
+          &:hover{
+            color: #fc3792!important;
+          }
+        }
+      }
+    }
     .aboutUs-section {
       height: 100% !important;
       margin-top: 45px;

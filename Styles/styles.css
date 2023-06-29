@@ -31,10 +31,10 @@ body nav.navbar .nav-link.col {
   color: #120f0f !important;
 }
 body nav.navbar .nav-link.col:hover {
-  color: #fc3792;
+  color: #fc3792 !important;
 }
 body nav.navbar .nav-link:hover {
-  color: #fc3792;
+  color: #fc3792 !important;
 }
 body nav.navbar.navcolor {
   transition: 0.3s all linear;
@@ -48,6 +48,9 @@ body nav.navbar .navbar-toggler {
 }
 body nav.navbar .navbar-toggler .navbar-toggler-icon {
   background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgb(255,255,255)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+}
+body nav.navbar .navbar-toggler .nav-scroll {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgb(0,0,0)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E") !important;
 }
 body nav.navbar .collapse {
   justify-content: flex-end;
@@ -96,16 +99,13 @@ body header .banner-socials .icon1 {
   position: relative;
   left: 20%;
   top: 25px;
-  animation: rotation 1s infinite linear;
 }
 body header .banner-socials .icon2 {
-  animation: rotation 1s infinite linear;
   position: relative;
   right: -100%;
 }
 body header .banner-socials .icon3 {
   position: absolute;
-  animation: rotation 9s infinite linear;
   top: 26%;
   left: 8%;
 }
@@ -187,7 +187,10 @@ body .main-body .services .services-body .service {
   background-color: #191919;
   color: white;
   padding: 10px 20px;
-  margin-bottom: 25px;
+  margin-bottom: 25px !important;
+  width: 100%;
+  max-width: 400px;
+  margin: auto;
 }
 body .main-body .services .services-body .service .service-name {
   font-size: 17px;
@@ -208,8 +211,18 @@ body .main-body .services .services-body .service .service-paragraph .down-arrow
   width: 15px;
   cursor: pointer;
 }
-body .main-body .services .services-body .service .service-description.hide {
+body .main-body .services .services-body .service .service-description.expanded-p {
   display: none;
+  margin-top: 10px;
+}
+body .main-body .services .services-body .service .service-description.active .expanded-p {
+  display: block;
+  overflow: hidden;
+  transition: height 0.3s ease-out;
+  transition-delay: 0.2s;
+}
+body .main-body .services .services-body .service .rotate {
+  transform: rotate(180deg);
 }
 body .main-body .div-top .div-top-title {
   color: white;
@@ -301,6 +314,9 @@ body footer .level-1 .socials a img {
   width: 100%;
   max-width: 39px;
 }
+body footer .level-1 .socials a:hover {
+  opacity: 0.7;
+}
 body footer .level-1 .cta-question {
   color: white;
   font-size: 30px;
@@ -319,6 +335,7 @@ body footer .level-1 .button-call .footer-btn {
   font-weight: 300px;
 }
 body footer .level-1 .button-call .footer-btn:hover {
+  color: #ece7e7 !important;
   background-color: #fc3792;
   border-color: white;
   transition: all 200ms ease-in;
@@ -348,14 +365,6 @@ body footer .level-3 .copyrights span {
   font-size: inherit;
 }
 
-@keyframes rotation {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
 @media (min-width: 768px) and (max-width: 999px) {
   body .call-section .call-meeting-image img {
     margin-left: -9px;
@@ -390,6 +399,17 @@ body footer .level-3 .copyrights span {
   }
 }
 @media (max-width: 990px) {
+  body nav.fixed-top .navbar-nav {
+    background: #fff;
+    margin-top: 30px;
+    padding: 25px;
+  }
+  body nav.fixed-top .nav-link {
+    color: #000000 !important;
+  }
+  body nav.fixed-top .nav-link:hover {
+    color: #fc3792 !important;
+  }
   body .aboutUs-section {
     height: 100% !important;
     margin-top: 45px;
